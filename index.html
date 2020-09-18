@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Food champion</title>
+
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+
+</head>
+
+<body>
+    <div class="slide slide1">
+        <form action="#" onsubmit="return false">
+            <h3>
+                Please fill in your postcode
+            </h3>
+            <input type="text" name="postcode" id="postcode">
+            <br />
+            <br />
+            <input type="button" name="button" id="button" value="Check postcode" onclick="checkPostocode();">
+        </form>
+    </div>
+    <div class="slide slide2">
+        <div id="map_container"></div>
+        <div id="messageContainer">
+            <div id="message"></div>
+            <div id="message_champion" class="score score1"></div>
+            <div id="message_partnership" class="score score1"></div>
+            <div id="message_result"></div>
+        </div>
+    </div>
+
+    <script>
+        // Lets fill in the council data
+        var all_councils;
+        $.getJSON('council_data.json', function (data) {
+            all_councils = data;
+        });
+
+        var all_messages = {
+            checking: "Checking ....",
+            invalid: "Not a valid postcode. Please enter a valid postcode",
+            only_england: "Sorry, currently we only have data on Councils in\n" +
+                "England. We hope to expand to cover councils in Scotland, Wales and Northern Ireland\n" +
+                "soon!",
+            no_data: "Sorry, we currently don't have any data about this postcode",
+            found_council: "Your local [council type] council is [council name].",
+            champion_yes: "&#10003; Your council has a food poverty champion!",
+            champion_no: "&#10060; Your council does not have a food poverty champion",
+            champion_dk: "&#10067; We don’t know if your council has a food poverty champion.",
+            partnership_yes: "&#10003; Your council has a food partnership!",
+            partnership_no: "&#10060; Your council does not have a partnership",
+            partnership_dk: "&#10067; We don’t know if your council has a food partnership.",
+            write_to_leader: "You can write to your council leader, [council leader title] [council leader first name] [council leader last name] now. Their email address is [council leader email address].",
+            all_positive: 'Good news! Your local council is taking action on food poverty. Why not congratulate them on Twitter? <a href="https://twitter.com/[twitter handle]">[twitter handle]</a>'
+
+
+        };
+
+        function checkPostocode() {
+            //catch submitions of the form
+            //console.log("we submited");
+
+            new_postcode = $("#postcode").val()
+            if (new_postcode != '') {
+                $("#message").html(all_messages.checking);
+                $("#message_partnership").html("");
+                $("#message_champion").html("");
+                $("#message_result").html("");
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://mapit.mysociety.org/postcode/" + $("#postcode").val() +
+                        "?api_key=iovwufdV5M81VSQT6QrP2XcZci7lGbW5qe8zFF3R",
+                    crossDomain: true,
+                    dataType: 'jsonp',
+                    success: function (result, status, xhr) {
+                        //console.log(result);
+                        // Clear out any existing results elements
+                        $("#map_container").html(
+                        "<div id='map' style='width: 100%; height: 400px;'></div>");
+
+                        if (400 == result['code']) {
+                            console.log("Not a valid postcode ")
+                            $("#message").html(all_messages.invalid);
+                        } else if (404 == result['code']) {
+                            console.log("MapIt doesnt know about this postcode ")
+                            $("#message").html(all_messages.no_data);
+                        } else {
+                            council_shortcode = result['shortcuts']['council']
+                            //console.log("council_shortcode is ")
+                            //console.log(council_shortcode)
+
+
+                            // #########################################
+                            // leaflet (map generation) code starts here
+                            // #########################################
+
+                            var map = new L.Map("map", {
+                                scrollWheelZoom: false
+                            });
+
+                            map.attributionControl.setPrefix('');
+
+                            var point = new L.LatLng(result.wgs84_lat, result.wgs84_lon);
+                            map.setView(point, 14);
+
+                            var layers = {
+                                osm: new L.TileLayer(
+                                    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                        attribution: 'Map Â© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                                        maxZoom: 14,
+                                        minZoom: 4
+                                    }),
+                                marker: new L.Marker(point)
+                            };
+                            map.addLayer(layers.marker);
+                            map.addLayer(layers.osm);
+
+
+                            var addArea = function addArea(map, layers, area_id) {
+                                var data = {
+                                    simplify_tolerance: '0.0001'
+                                };
+                                var api_key = $(map.getContainer()).data('key');
+                                if (api_key) {
+                                    data.api_key = api_key;
+                                }
+                                $.ajax({
+                                    dataType: 'json',
+                                    url: 'https://mapit.mysociety.org/area/' + area_id +
+                                        '.geojson' +
+                                        "?api_key=iovwufdV5M81VSQT6QrP2XcZci7lGbW5qe8zFF3R",
+                                    data: data
+                                }).done(function (geojson) {
+                                    layers[area_id] = new L.GeoJSON(geojson, {
+                                        style: {
+                                            color: '#4FADED',
+                                            weight: 3,
+                                            opacity: 1
+                                        }
+                                    });
+                                    map.addLayer(layers[area_id]);
+                                    map.fitBounds(layers[area_id].getBounds());
+
+                                }).fail(function () {
+                                    // This might happen if the area has no polygons.
+                                    // (We try to exclude these using areasToIgnore, but some
+                                    // might slip through.) Seems silly to feed back the error
+                                    // to the user, so just deselect the button and move on.
+                                    $('[data-areaid="' + area_id + '"]').removeClass(
+                                    'selected');
+
+                                });
+                            }
+
+                            addArea(map, layers, council_shortcode);
+
+                            // #########################################
+                            // leaflet (map generation) code ends   here
+                            // #########################################
+
+
+                            // First lets check the country
+                            country = result["areas"][council_shortcode]["country"]
+                            if ("E" != country) {
+                                $("#message").html(all_messages.only_england);
+                            } else {
+                                council = result["areas"][council_shortcode]["name"]
+                                this_data = all_councils[council];
+                                if (undefined == this_data) {
+                                    console.log(
+                                        "We don't have data for this, even though it is a valid postcode"
+                                        )
+                                    $("#message_result").html(all_messages.no_data);
+                                } else {
+                                    council_type = this_data["Council Type"]
+                                    //console.log("this council data");
+                                    //console.log(this_data);
+                                    //console.log("council is ")
+                                    //console.log(council)
+                                    $("#message").html(all_messages.found_council.replace("[council type]",
+                                        council_type).replace("[council name]", council));
+
+                                    write_to_leader = false;
+
+                                    has_partnership = this_data["Partnership"];
+                                    if ("y" == has_partnership) {
+                                        $("#message_partnership").html(all_messages.partnership_yes);
+                                    } else if ("n" == has_partnership) {
+                                        $("#message_partnership").html(all_messages.partnership_no);
+                                        write_to_leader = true;
+                                    } else if ("dk" == has_partnership) {
+                                        $("#message_partnership").html(all_messages.partnership_dk);
+                                        write_to_leader = true;
+                                    }
+
+                                    has_champion = this_data["Lead Member"];
+                                    if ("y" == has_champion) {
+                                        $("#message_champion").html(all_messages.champion_yes);
+                                    } else if ("n" == has_champion) {
+                                        $("#message_champion").html(all_messages.champion_no);
+                                        write_to_leader = true;
+                                    } else if ("dk" == has_champion) {
+                                        $("#message_champion").html(all_messages.champion_dk);
+                                        write_to_leader = true;
+                                    }
+
+                                    if (write_to_leader) {
+                                        message_to_write = all_messages.write_to_leader;
+                                        message_to_write = message_to_write.replace(
+                                            "[council leader title]", this_data["Leader Title"]);
+                                        message_to_write = message_to_write.replace(
+                                            "[council leader first name]", this_data[
+                                                "Leader First Name"]);
+                                        message_to_write = message_to_write.replace(
+                                            "[council leader last name]", this_data["Leader Surname"]);
+                                        message_to_write = message_to_write.replace(
+                                            "[council leader email address]", this_data[
+                                                "Leader Email Address"]);
+                                        $("#message_result").html(message_to_write);
+                                    } else {
+                                        message_to_write = all_messages.all_positive;
+                                        message_to_write = message_to_write.replace(/\[twitter handle\]/g,
+                                            this_data["Council Twitter"]);
+                                        $("#message_result").html(message_to_write);
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+                    }
+                });
+            }
+
+        };
+    </script>
+
+
+</body>
+
+</html>
