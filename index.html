@@ -3,251 +3,378 @@
 
 <head>
 
-    <title>Food champion</title>
-
+    <title>Food Justice Finder</title>
     <meta charset="utf-8" />
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
+    <script src="https://kit.fontawesome.com/0131969291.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="style.css" />
 
 </head>
 
 <body>
+    <header>
+        <div class="container">
+            <div class="row">
+
+                <div class="col">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="#"><img src="images/Logo Long Teal@4x.png"
+                                class="img-fluid navLogo"></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link</a>
+                                </li>
+                                <!-- <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                              </div>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link disabled" href="#">Disabled</a>
+                            </li> -->
+                            </ul>
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </header>
     <div class="slide slide1">
-        <form action="#" onsubmit="return false">
-            <h3>
-                Please fill in your postcode
-            </h3>
-            <input type="text" name="postcode" id="postcode">
-            <br />
-            <br />
-            <input type="button" name="button" id="button" value="Check postcode" onclick="checkPostocode();">
-        </form>
-    </div>
-    <div class="slide slide2">
-        <div id="map_container"></div>
-        <div id="messageContainer">
-            <div id="message"></div>
-            <div id="message_champion" class="score score1"></div>
-            <div id="message_partnership" class="score score1"></div>
-            <div id="message_result"></div>
+        <div class="container py-5">
+            <div class="row align-self-center">
+                <div class="col-md mb-5">
+                    <img src="images/Logo White@4x.png" class="logoFirst img-fluid">
+                </div>
+
+                <div class="col-md mt-md-5">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut leo ut libero volutpat
+                        facilisis. Fusce porta in arcu non fermentum. Mauris rutrum fermentum ex. Aliquam egestas ex
+                        quis magna mollis tempus. Quisque nec nisi pretium, suscipit leo ac, luctus urna. Fusce
+                        consectetur scelerisque turpis, in fringilla urna aliquet id. Sed pulvinar finibus nisi quis
+                        scelerisque. </p>
+                    <p>Pellentesque mattis et augue ac scelerisque. Sed arcu erat, ultrices eu pellentesque ac,
+                        hendrerit accumsan urna. Duis nec suscipit risus, vitae tempus arcu. Nullam at nibh non erat
+                        lacinia posuere. </p>
+                    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas
+                        cursus sapien quis ante lobortis, sit amet volutpat purus facilisis. Etiam arcu felis, tincidunt
+                        sit amet arcu a, tincidunt porttitor nunc.</p>
+
+
+
+                    <form action="#" class="form-inline" onsubmit="return false">
+                        <div class="form-group  mr-2 mb-2">
+                            <input type="text" class="form-control" name="postcode" id="postcode"
+                                placeholder="e.g. SE17 3BQ">
+                        </div>
+                        <div class="form-group  mr-2 mb-2">
+                            <button type="button" name="button" id="button" value="Check postcode"
+                                class="btn btn-primary btn-post" onclick="checkPostocode();">Find your council</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
         </div>
     </div>
+    <div class="slide slide2">
+        <div id='map' style='width: 100%; height: 100vh;'>
+            <div id="messageContainer">
+                <div id="message"></div>
+                <div id="message_champion" class="score score1"></div>
+                <div id="message_partnership" class="score score1"></div>
+                <div id="message_result"></div>
+            </div>
+        </div>
+    </div>
+    <div class="slide slide3">
+        <div class="container">
+            <div class="row align-self-center my-3">
+                <div class="col-md">
+                    <div id="message">
+                        <!-- <p class='councilData'>Your local <span class="councilType">[council type]</span> council is
+                            <span class="councilName">[council name]</span>.</p> -->
 
-    <script>
-        // Lets fill in the council data
-        var all_councils;
-        $.getJSON('council_data.json', function (data) {
-            all_councils = data;
-        });
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut leo ut libero volutpat
+                        facilisis. Fusce porta in arcu non fermentum. Mauris rutrum fermentum ex. Aliquam egestas ex
+                        quis magna mollis tempus. Quisque nec nisi pretium, suscipit leo ac, luctus urna. Fusce
+                        consectetur scelerisque turpis, in fringilla urna aliquet id. Sed pulvinar finibus nisi quis
+                        scelerisque. </p>
+                    <p>Pellentesque mattis et augue ac scelerisque. Sed arcu erat, ultrices eu pellentesque ac,
+                        hendrerit accumsan urna. Duis nec suscipit risus, vitae tempus arcu. Nullam at nibh non erat
+                        lacinia posuere. </p>
+                    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas
+                        cursus sapien quis ante lobortis, sit amet volutpat purus facilisis. Etiam arcu felis, tincidunt
+                        sit amet arcu a, tincidunt porttitor nunc.</p>
 
-        var all_messages = {
-            checking: "Checking ....",
-            invalid: "Not a valid postcode. Please enter a valid postcode",
-            only_england: "Sorry, currently we only have data on Councils in\n" +
-                "England. We hope to expand to cover councils in Scotland, Wales and Northern Ireland\n" +
-                "soon!",
-            no_data: "Sorry, we currently don't have any data about this postcode",
-            found_council: "Your local [council type] council is [council name].",
-            champion_yes: "&#10003; Your council has a food poverty champion!",
-            champion_no: "&#10060; Your council does not have a food poverty champion",
-            champion_dk: "&#10067; We don’t know if your council has a food poverty champion.",
-            partnership_yes: "&#10003; Your council has a food partnership!",
-            partnership_no: "&#10060; Your council does not have a partnership",
-            partnership_dk: "&#10067; We don’t know if your council has a food partnership.",
-            write_to_leader: "You can write to your council leader, [council leader title] [council leader first name] [council leader last name] now. Their email address is [council leader email address].",
-            all_positive: 'Good news! Your local council is taking action on food poverty. Why not congratulate them on Twitter? <a href="https://twitter.com/[twitter handle]">[twitter handle]</a>'
+                </div>
+                <div class="col-md">
 
+                    <form method="post" enctype="multipart/form-data" id="gform_384"
+                        action="https://party.coop/food-justice-finder/">
 
-        };
+                        <div class="gform_body">
+                            <ul id="gform_fields_384"
+                                class="gform_fields top_label form_sublabel_below description_below">
+                                <div class="hiddenFields">
+                                    <li id="field_384_1"
+                                        class="gfield postcode gfield_contains_required field_sublabel_hidden_label field_description_below hidden_label gfield_visibility_visible form-group">
+                                        <label class="gfield_label gfield_label_before_complex">Address</label>
+                                        <div class="ginput_complex ginput_container has_zip ginput_container_address"
+                                            id="input_384_1">
+                                            <input type="hidden" class="gform_hidden" name="input_1.4"
+                                                id="input_384_1_4" value=""><span class="ginput_right address_zip"
+                                                id="input_384_1_5_container">
+                                                <input type="text" class="form-control" name="input_1.5"
+                                                    id="input_384_1_5" value="" placeholder="Postcode"
+                                                    aria-required="true">
+                                                <label for="input_384_1_5" id="input_384_1_5_label"
+                                                    class="hidden_sub_label screen-reader-text">Postcode</label>
+                                            </span><input type="hidden" class="gform_hidden" name="input_1.6"
+                                                id="input_384_1_6" value="">
+                                            <div class="gf_clear gf_clear_complex"></div>
+                                        </div>
+                                    </li>
+                                    <li id="field_384_9"
+                                        class="gfield councilTypeInput gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible form-group">
+                                        <label class="gfield_label" for="input_384_9">Council Type</label>
+                                        <div class="ginput_container ginput_container_text"><input name="input_9"
+                                                id="input_384_9" type="text" value="" class="form-control"
+                                                placeholder="Council Type" aria-required="true" aria-invalid="false">
+                                        </div>
+                                    </li>
+                                    <li id="field_384_10"
+                                        class="gfield councilNameInput gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible form-group">
+                                        <label class="gfield_label" for="input_384_10">Council Name</label>
+                                        <div class="ginput_container ginput_container_text"><input name="input_10"
+                                                id="input_384_10" type="text" value="" class="form-control"
+                                                placeholder="Council Name" aria-required="true" aria-invalid="false">
+                                        </div>
+                                    </li>
+                                    <li id="field_384_2"
+                                        class="gfield councilLeaderTitleInput gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible form-group">
+                                        <label class="gfield_label" for="input_384_2">Council Leader Title</label>
+                                        <div class="ginput_container ginput_container_text"><input name="input_2"
+                                                id="input_384_2" type="text" value="" class="form-control"
+                                                placeholder="Council Leader Title" aria-required="true"
+                                                aria-invalid="false"></div>
+                                    </li>
+                                    <li id="field_384_3"
+                                        class="gfield councilLeaderNameInput gfield_contains_required field_sublabel_hidden_label field_description_below hidden_label gfield_visibility_visible form-group">
+                                        <label class="gfield_label gfield_label_before_complex">Name</label>
+                                        <div class="ginput_complex ginput_container no_prefix has_first_name no_middle_name has_last_name no_suffix gf_name_has_2 ginput_container_name"
+                                            id="input_384_3">
 
-        function checkPostocode() {
-            //catch submitions of the form
-            //console.log("we submited");
+                                            <span id="input_384_3_3_container" class="name_first">
+                                                <input type="text" class="form-control" name="input_3.3"
+                                                    id="input_384_3_3" value="" aria-label="First name"
+                                                    aria-required="true" aria-invalid="false"
+                                                    placeholder="Council Leader First Name">
+                                                <label for="input_384_3_3"
+                                                    class="hidden_sub_label screen-reader-text">Council Leader First
+                                                    Name</label>
+                                            </span>
 
-            new_postcode = $("#postcode").val()
-            if (new_postcode != '') {
-                $("#message").html(all_messages.checking);
-                $("#message_partnership").html("");
-                $("#message_champion").html("");
-                $("#message_result").html("");
+                                            <span id="input_384_3_6_container" class="name_last">
+                                                <input class="form-control" type="text" name="input_3.6"
+                                                    id="input_384_3_6" value="" aria-label="Last name"
+                                                    aria-required="true" aria-invalid="false"
+                                                    placeholder="Council Leader Last Name">
+                                                <label for="input_384_3_6"
+                                                    class="hidden_sub_label screen-reader-text">Council Leader Last
+                                                    Name</label>
+                                            </span>
 
-                $.ajax({
-                    type: "POST",
-                    url: "https://mapit.mysociety.org/postcode/" + $("#postcode").val() +
-                        "?api_key=iovwufdV5M81VSQT6QrP2XcZci7lGbW5qe8zFF3R",
-                    crossDomain: true,
-                    dataType: 'jsonp',
-                    success: function (result, status, xhr) {
-                        //console.log(result);
-                        // Clear out any existing results elements
-                        $("#map_container").html(
-                        "<div id='map' style='width: 100%; height: 400px;'></div>");
+                                        </div>
+                                    </li>
+                                    <li id="field_384_4"
+                                        class="gfield councilLeaderEmailInput gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible form-group">
+                                        <label class="gfield_label" for="input_384_4">Council Leader Email</label>
+                                        <div class="ginput_container ginput_container_email">
+                                            <input name="input_4" id="input_384_4" type="email" value=""
+                                                class="form-control" placeholder="Council Leader Email"
+                                                aria-required="true" aria-invalid="false">
+                                        </div>
+                                    </li>
+                                </div>
 
-                        if (400 == result['code']) {
-                            console.log("Not a valid postcode ")
-                            $("#message").html(all_messages.invalid);
-                        } else if (404 == result['code']) {
-                            console.log("MapIt doesnt know about this postcode ")
-                            $("#message").html(all_messages.no_data);
-                        } else {
-                            council_shortcode = result['shortcuts']['council']
-                            //console.log("council_shortcode is ")
-                            //console.log(council_shortcode)
+                                <li id="field_384_5"
+                                    class="gfield yourName gfield_contains_required field_sublabel_hidden_label field_description_below hidden_label gfield_visibility_visible form-group">
+                                    <label class="gfield_label gfield_label_before_complex">Your name</label>
+                                    <div class="ginput_complex ginput_container no_prefix has_first_name no_middle_name has_last_name no_suffix gf_name_has_2 ginput_container_name"
+                                        id="input_384_5">
 
+                                        <span id="input_384_5_3_container" class="name_first">
+                                            <input type="text" class="form-control" name="input_5.3" id="input_384_5_3"
+                                                value="" aria-label="First name" aria-required="true"
+                                                aria-invalid="false" placeholder="Your first name">
+                                            <label for="input_384_5_3" class="hidden_sub_label screen-reader-text">Your
+                                                first name</label>
+                                        </span>
 
-                            // #########################################
-                            // leaflet (map generation) code starts here
-                            // #########################################
+                                        <span id="input_384_5_6_container" class="name_last">
+                                            <input type="text" class="form-control" name="input_5.6" id="input_384_5_6"
+                                                value="" aria-label="Last name" aria-required="true"
+                                                aria-invalid="false" placeholder="Your last name">
+                                            <label for="input_384_5_6" class="hidden_sub_label screen-reader-text">Your
+                                                last name</label>
+                                        </span>
 
-                            var map = new L.Map("map", {
-                                scrollWheelZoom: false
-                            });
+                                    </div>
+                                </li>
+                                <li id="field_384_6"
+                                    class="gfield yourEmail gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible form-group">
+                                    <label class="gfield_label" for="input_384_6">Your email</label>
+                                    <div class="ginput_container ginput_container_email">
+                                        <input name="input_6" id="input_384_6" type="email" value=""
+                                            class="form-control" placeholder="Your email" aria-required="true"
+                                            aria-invalid="false">
+                                    </div>
+                                </li>
+                                <div class='nameData'>
+                                    <p>To: <span class="councilLeaderEmail">[council leader email address]</span></p>
+                                    <p>Dear <span class="councilLeaderTitle">[council leader title]</span> <span
+                                            class="councilLeaderFirst">[council leader first name]</span> <span
+                                            class="councilLeaderLast">[council leader last name]</span>,</p>
+                                </div>
+                                <li id="field_384_7"
+                                    class="gfield yourMessage gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible form-group">
+                                    <label class="gfield_label" for="input_384_7">Your message</label>
+                                    <div class="ginput_container ginput_container_textarea"><textarea name="input_7"
+                                            id="input_384_7" class="form-control" placeholder="Your message"
+                                            aria-required="true" aria-invalid="false" rows="10"
+                                            cols="50">Your message</textarea></div>
+                                </li>
+                                <li id="field_384_8"
+                                    class="gfield consent-radio gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible form-group">
+                                    <label class="gfield_label">Would you like to receive email updates on this campaign
+                                        and other ways to get involved with the co-operative movement? <a
+                                            href="https://party.coop/privacy/" class="form-privacy">(See our privacy
+                                            policy)</a></label>
+                                    <div class="ginput_container ginput_container_radio form-check">
+                                        <ul class="gfield_radio" id="input_384_8">
+                                            <li class="gchoice_384_8_0"><input name="input_8" type="radio" value="Yes"
+                                                    id="choice_384_8_0" class="form-check-input"><label
+                                                    for="choice_384_8_0" id="label_384_8_0"
+                                                    class="form-check-label">Yes</label></li>
+                                            <li class="gchoice_384_8_1"><input name="input_8" type="radio" value="No"
+                                                    id="choice_384_8_1" class="form-check-input"><label
+                                                    for="choice_384_8_1" id="label_384_8_1"
+                                                    class="form-check-label">No</label></li>
+                                        </ul>
+                                    </div>
 
-                            map.attributionControl.setPrefix('');
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="gform_footer top_label">
+                            <!-- <input type="submit" id="gform_submit_button_384"
+                                class="gform_button btn button" value="Submit" onclick="shortcutTest();" > -->
+                            <a class="gform_button btn button" onclick="nextSlide('.slide3');">Send</a>
+                            <input type="hidden" class="gform_hidden" name="is_submit_384" value="1">
+                            <input type="hidden" class="gform_hidden" name="gform_submit" value="384">
 
-                            var point = new L.LatLng(result.wgs84_lat, result.wgs84_lon);
-                            map.setView(point, 14);
+                            <input type="hidden" class="gform_hidden" name="gform_unique_id" value="">
+                            <input type="hidden" class="gform_hidden" name="state_384"
+                                value="WyJbXSIsImE4NGZjNDY4MzJmMjg3ZGViNGI5NzlmNDNlMTY3NzExIl0=">
+                            <input type="hidden" class="gform_hidden" name="gform_target_page_number_384"
+                                id="gform_target_page_number_384" value="0">
+                            <input type="hidden" class="gform_hidden" name="gform_source_page_number_384"
+                                id="gform_source_page_number_384" value="1">
+                            <input type="hidden" name="gform_field_values" value="">
 
-                            var layers = {
-                                osm: new L.TileLayer(
-                                    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                        attribution: 'Map Â© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                                        maxZoom: 14,
-                                        minZoom: 4
-                                    }),
-                                marker: new L.Marker(point)
-                            };
-                            map.addLayer(layers.marker);
-                            map.addLayer(layers.osm);
+                        </div>
+                    </form>
 
-
-                            var addArea = function addArea(map, layers, area_id) {
-                                var data = {
-                                    simplify_tolerance: '0.0001'
-                                };
-                                var api_key = $(map.getContainer()).data('key');
-                                if (api_key) {
-                                    data.api_key = api_key;
-                                }
-                                $.ajax({
-                                    dataType: 'json',
-                                    url: 'https://mapit.mysociety.org/area/' + area_id +
-                                        '.geojson' +
-                                        "?api_key=iovwufdV5M81VSQT6QrP2XcZci7lGbW5qe8zFF3R",
-                                    data: data
-                                }).done(function (geojson) {
-                                    layers[area_id] = new L.GeoJSON(geojson, {
-                                        style: {
-                                            color: '#4FADED',
-                                            weight: 3,
-                                            opacity: 1
-                                        }
-                                    });
-                                    map.addLayer(layers[area_id]);
-                                    map.fitBounds(layers[area_id].getBounds());
-
-                                }).fail(function () {
-                                    // This might happen if the area has no polygons.
-                                    // (We try to exclude these using areasToIgnore, but some
-                                    // might slip through.) Seems silly to feed back the error
-                                    // to the user, so just deselect the button and move on.
-                                    $('[data-areaid="' + area_id + '"]').removeClass(
-                                    'selected');
-
-                                });
-                            }
-
-                            addArea(map, layers, council_shortcode);
-
-                            // #########################################
-                            // leaflet (map generation) code ends   here
-                            // #########################################
-
-
-                            // First lets check the country
-                            country = result["areas"][council_shortcode]["country"]
-                            if ("E" != country) {
-                                $("#message").html(all_messages.only_england);
-                            } else {
-                                council = result["areas"][council_shortcode]["name"]
-                                this_data = all_councils[council];
-                                if (undefined == this_data) {
-                                    console.log(
-                                        "We don't have data for this, even though it is a valid postcode"
-                                        )
-                                    $("#message_result").html(all_messages.no_data);
-                                } else {
-                                    council_type = this_data["Council Type"]
-                                    //console.log("this council data");
-                                    //console.log(this_data);
-                                    //console.log("council is ")
-                                    //console.log(council)
-                                    $("#message").html(all_messages.found_council.replace("[council type]",
-                                        council_type).replace("[council name]", council));
-
-                                    write_to_leader = false;
-
-                                    has_partnership = this_data["Partnership"];
-                                    if ("y" == has_partnership) {
-                                        $("#message_partnership").html(all_messages.partnership_yes);
-                                    } else if ("n" == has_partnership) {
-                                        $("#message_partnership").html(all_messages.partnership_no);
-                                        write_to_leader = true;
-                                    } else if ("dk" == has_partnership) {
-                                        $("#message_partnership").html(all_messages.partnership_dk);
-                                        write_to_leader = true;
-                                    }
-
-                                    has_champion = this_data["Lead Member"];
-                                    if ("y" == has_champion) {
-                                        $("#message_champion").html(all_messages.champion_yes);
-                                    } else if ("n" == has_champion) {
-                                        $("#message_champion").html(all_messages.champion_no);
-                                        write_to_leader = true;
-                                    } else if ("dk" == has_champion) {
-                                        $("#message_champion").html(all_messages.champion_dk);
-                                        write_to_leader = true;
-                                    }
-
-                                    if (write_to_leader) {
-                                        message_to_write = all_messages.write_to_leader;
-                                        message_to_write = message_to_write.replace(
-                                            "[council leader title]", this_data["Leader Title"]);
-                                        message_to_write = message_to_write.replace(
-                                            "[council leader first name]", this_data[
-                                                "Leader First Name"]);
-                                        message_to_write = message_to_write.replace(
-                                            "[council leader last name]", this_data["Leader Surname"]);
-                                        message_to_write = message_to_write.replace(
-                                            "[council leader email address]", this_data[
-                                                "Leader Email Address"]);
-                                        $("#message_result").html(message_to_write);
-                                    } else {
-                                        message_to_write = all_messages.all_positive;
-                                        message_to_write = message_to_write.replace(/\[twitter handle\]/g,
-                                            this_data["Council Twitter"]);
-                                        $("#message_result").html(message_to_write);
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        alert("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
-                    }
-                });
-            }
-
-        };
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide slide4">
+        <div class="container">
+            <div class="row align-self-center my-3">
+                <div class="col-md">
+                    <h3>Thanks for writing to your council!</h3>
+                    <p>We need as many people as possible to join this campaign. <strong>Will you share your support on
+                            social media to help us spread the word?</strong></p>
+                    <p class="slideShare"> <a class="btn btn-twitter"
+                           href="#" target="_blank"> <i class="fa fa-twitter"></i> Share on Twitter </a> <a
+                            class="btn btn-facebook"
+                          href="#" target="_blank" rel="noopener"> <i class="fa fa-facebook"></i> Share on Facebook </a> <a
+                            class="btn btn-skip" onclick="nextSlide('.slide4');">Skip</a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide slide5">
+        <div class="container">
+            <div class="row align-self-center my-3">
+                <div class="col-md">
+                    <h3>Thanks<span class="firstName"></span>! Just one more thing...</h3>
+                    <p>The best way to get as many people involved as possible is to share the campaign on WhatsApp.
+                        Press the button below to send a message about the campaign to your friends and WhatsApp groups!
+                    </p>
+                    <p class="slideShare"><a class="btn btn-whatsapp"
+                          href="#" target="_blank" rel="noopener"><i class="fa fa-whatsapp" aria-hidden="true"></i> Share on
+                            WhatsApp</a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row py-3">
+                <div class="col">
+                    <p>Promoted by Joe Fortune on behalf of the Co-operative Party, both at Unit 13, 83 Crampton Street,
+                        London, SE17 3BQ, United Kingdom. Co-operative Party Limited is a registered Society under the
+                        Co-operative and Community Benefit Societies Act 2014. Registered no. 30027R </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script src="script.js" crossorigin="anonymous"></script>
+
 
 
 </body>
