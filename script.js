@@ -460,21 +460,19 @@
         }
         nextSlide('.slide1');
     };
-
-    $("#gform_384").trigger(function (event) {
-    console.log("formSubmit");
-       document.domain = "party.coop";
-       event.preventDefault(); //prevent default action
-     var pageURL = "https://party.coop/food-justice-finder/"
-       var post_url = pageURL;
-       var request_method = jQuery(this).attr("method"); //get form GET/POST method
-       var form_data = jQuery(this).serialize(); //Encode form elements for submission
- 
-       jQuery.ajax({
-         url: post_url,
-         type: request_method,
-         data: form_data
-       });
+    jQuery("#gform_1").submit(function (event) {
+        console.log("Is this working?")
+        event.preventDefault(); //prevent default action
+        document.domain = "foodjusticefinder.com";
+        var post_url = jQuery(this).attr("action"); //get form action url
+        var request_method = jQuery(this).attr("method"); //get form GET/POST method
+        var form_data = jQuery(this).serialize(); //Encode form elements for submission
+  
+        jQuery.ajax({
+          url: post_url,
+          type: request_method,
+          data: form_data
+        });
      
  nextSlide('.slide3');
      });
@@ -495,7 +493,3 @@
        nextSlide('.slide4');
    });
 
-   function shortcutTest() {
-       event.preventDefault(); 
-       nextSlide('.slide3');
-   }
