@@ -6,7 +6,41 @@
     <title>Food Justice Finder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
+
+
+    <meta name="description" content="Want to help tackle food poverty in your area? Find out now if your council has taken our two steps to food justice." />
+
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CoopParty">
+    <meta name="twitter:title" content="Food Justice Finder">
+    <meta name="twitter:description" content="Want to help tackle food poverty in your area? Find out now if your council has taken our two steps to food justice.">
+    <meta name="twitter:creator" content="@CoopParty">
+    <meta name="twitter:image:src" content="https://foodjusticefinder.com/images/card.png">
+    
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Food Justice Finder" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://foodjusticefinder.com" />
+    <meta property="og:image" content="https://foodjusticefinder.com/images/card.png" />
+    <meta property="og:description" content="Want to help tackle food poverty in your area? Find out now if your council has taken our two steps to food justice." />
+
     <link rel="shortcut icon" type="image/jpg" href="images/favicon.png" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-27CWJNNLTY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-27CWJNNLTY');
+    </script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha1-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -23,7 +57,7 @@
     <header>
         <div class="container-fluid">
             <div class="row">
-              
+
                 <div class="col">
                     <nav class="navbar navbar-dark bg-light">
 
@@ -36,7 +70,8 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">About Food Justice Finder</a>
+                                    <a class="nav-link" href="https://foodjusticefinder.com">Find your council</a>
+                                    <a class="nav-link" href="https://foodjusticefinder.com/about.html">About Food Justice Finder</a>
                                 </li>
 
 
@@ -84,51 +119,76 @@
     </div>
     <div class="slide slide2">
         <div class="container-fluid">
-<div class="mapCol">
-            <div id='map' style='width: 100%; min-height: 100vh; height: 100%;'>
-            </div>
-            <div class="explainerSlide">
-                <div class="explainer">
-                    <div class="championExplain explainBox">
-                        <h3>What is a Food Champion?</h3>
-                        <p>We know that for overstretched councils, it's easy for issues like food poverty to fall between the cracks because responsibility for tackling it is split across different councillors, teams or departments. 
-                        </p><p>
-                By appointing a "lead member" for food poverty, you create a Food Champion: a point person who can draw together different work streams in a council, track progress and be a single point of contact for helpful external organisations like community kitchens or food banks.</p>
-                    </div>
-                 <div class="partnershipExplain explainBox">
-                <h3>What is a Food Partnership?</h3>
-                        <p>Food partnerships link up local government with local community organisations – so that food banks, community kitchens and other amazing initiatives get all the support they need.
-                        </p><p>
-                Councils and communities are often independently doing amazing work to alleviate food poverty in their area: but we know they're stronger when they work together. Existing food partnerships, from Bangor to Brighton, have had a transformational effect on food poverty in their areas.</p>
+            <div class="mapCol">
+                <div id='map' style='width: 100%; min-height: 100vh; height: 100%;'>
+                </div>
+                <div class="explainerSlide">
+                    <div class="explainer">
+                        <div class="championExplain explainBox">
+                            <h3>What is a Food Champion?</h3>
+                            <p>We know that for overstretched councils, it's easy for issues like food poverty to fall
+                                between the cracks because responsibility for tackling it is split across different
+                                councillors, teams or departments.
+                            </p>
+                            <p>
+                                By appointing a "lead member" for food poverty, you create a Food Champion: a point
+                                person who can draw together different work streams in a council, track progress and be
+                                a single point of contact for helpful external organisations like community kitchens or
+                                food banks.</p>
+                        </div>
+                        <div class="partnershipExplain explainBox">
+                            <h3>What is a Food Partnership?</h3>
+                            <p>Food partnerships link up local government with local community organisations – so that
+                                food banks, community kitchens and other amazing initiatives get all the support they
+                                need.
+                            </p>
+                            <p>
+                                Councils and communities are often independently doing amazing work to alleviate food
+                                poverty in their area: but we know they're stronger when they work together. Existing
+                                food partnerships, from Bangor to Brighton, have had a transformational effect on food
+                                poverty in their areas.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
             <div id="messageContainer">
                 <div id="message"></div>
                 <div id="message_champion" class="score score1"></div>
                 <div id="message_partnership" class="score score1"></div>
-<p style="text-align: right; margin: 0;">
-        <button class="buttonLink" id="slideReveal">Find out more: What is a food champion and food partnership?</button>
-        <button class="buttonLink" id="boxReveal">Find out more: What is a food champion and food partnership?</button>
-    </p>
+                <p style="text-align: right; margin: 0;">
+                    <button class="buttonLink" id="slideReveal">Find out more: What is a food champion and food
+                        partnership?</button>
+                    <button class="buttonLink" id="boxReveal">Find out more: What is a food champion and food
+                        partnership?</button>
+                </p>
 
-        <div class="explainer mobile">
-            <div class="championExplain explainBox">
-                <h3>What is a Food Champion?</h3>
-                <p>We know that for overstretched councils, it's easy for issues like food poverty to fall between the cracks because responsibility for tackling it is split across different councillors, teams or departments. 
-                </p><p>
-        By appointing a "lead member" for food poverty, you create a Food Champion: a point person who can draw together different work streams in a council, track progress and be a single point of contact for helpful external organisations like community kitchens or food banks.</p>
-            </div>
-         <div class="partnershipExplain explainBox">
-        <h3>What is a Food Partnership?</h3>
-                <p>Food partnerships link up local government with local community organisations – so that food banks, community kitchens and other amazing initiatives get all the support they need.
-                </p><p>
-        Councils and communities are often independently doing amazing work to alleviate food poverty in their area: but we know they're stronger when they work together. Existing food partnerships, from Bangor to Brighton, have had a transformational effect on food poverty in their areas.</p>
-            </div>
-        </div>
-<!-- 
+                <div class="explainer mobile">
+                    <div class="championExplain explainBox">
+                        <h3>What is a Food Champion?</h3>
+                        <p>We know that for overstretched councils, it's easy for issues like food poverty to fall
+                            between the cracks because responsibility for tackling it is split across different
+                            councillors, teams or departments.
+                        </p>
+                        <p>
+                            By appointing a "lead member" for food poverty, you create a Food Champion: a point person
+                            who can draw together different work streams in a council, track progress and be a single
+                            point of contact for helpful external organisations like community kitchens or food banks.
+                        </p>
+                    </div>
+                    <div class="partnershipExplain explainBox">
+                        <h3>What is a Food Partnership?</h3>
+                        <p>Food partnerships link up local government with local community organisations – so that food
+                            banks, community kitchens and other amazing initiatives get all the support they need.
+                        </p>
+                        <p>
+                            Councils and communities are often independently doing amazing work to alleviate food
+                            poverty in their area: but we know they're stronger when they work together. Existing food
+                            partnerships, from Bangor to Brighton, have had a transformational effect on food poverty in
+                            their areas.</p>
+                    </div>
+                </div>
+                <!-- 
                 <div id="accordion" class="clearfix">
                     <div class="card">
                       <div class="card-header" id="headingTwo">
@@ -181,7 +241,7 @@ What is a Food Partnership?</h3>
                     </div>
                 </div> -->
 
-            
+
                 <div id="message_result"></div>
                 <p class="corrections">Is this data incorrect or out of date? Let us know at <a
                         href="mailto:mail@foodjusticefinder.com">mail@foodjusticefinder.com</a> and we'll update our
@@ -200,7 +260,9 @@ What is a Food Partnership?</h3>
                     </div>
 
                     <h2 class="high gw"><span>Write to your local council</strong>.</span></h2>
-                    <p>Use the form provided to email your local council leader. We've provided a template message that you can send with no changes, but we encourage you if you have time to edit it and make it your own. We
+                    <p>Use the form provided to email your local council leader. We've provided a template message that
+                        you can send with no changes, but we encourage you if you have time to edit it and make it your
+                        own. We
                         have three top tips for writing a successful email.
                     </p>
                     <p>
@@ -210,14 +272,15 @@ What is a Food Partnership?</h3>
                         We created Food Justice Finder because we want to see Food Champions and Food Partnerships in
                         every council area in the UK. Just because your council may not have a Food Champion or a Food
                         Partnership doesn't mean they're not fighting hard to tackle food poverty. It just means
-                        there are one or two things more they could do to make their work even more effective! 
+                        there are one or two things more they could do to make their work even more effective!
                     </p>
-                   
+
                     <p>
                         <strong>2. Be personal</strong>
                     </p>
                     <p>
-                        Make the email as relevant as possible to your local area: if you know of great local initatives or you have personal experience with the subject, feel free to include it. 
+                        Make the email as relevant as possible to your local area: if you know of great local initatives
+                        or you have personal experience with the subject, feel free to include it.
                     </p>
                     <p>
                         <strong>3. Be polite</strong>
@@ -228,7 +291,7 @@ What is a Food Partnership?</h3>
                         on food justice across the country, from Greenwich to Glasgow, Swansea to Surrey. What matters
                         most is ensuring food reaches those who need it most, not point-scoring.
                     </p>
-                    
+
                 </div>
                 <div class="col-md offset-md-1">
 
@@ -419,11 +482,16 @@ What is a Food Partnership?</h3>
                     <p>We need as many people as possible to join this campaign. <strong>Will you share your support on
                             social media to help us spread the word?</strong></p>
 
-                            
-                    <p class="slideShare"> <a class="btn btn-twitter" href="https://twitter.com/intent/tweet?text=I%20used%20%23FoodJusticeFinder%20to%20see%20what%20action%20my%20local%20council%20has%20taken%20on%20food%20poverty.%20Find%20out%20if%20your%20council%20has%20taken%20the%20first%20steps%20to%20food%20justice%20here%20%F0%9F%91%87&url=https%3A%2F%2Ffoodjusticefinder.com%3Futm_source%3Dtwitter%26utm_medium%3Dsocial%26utm_campaign%3Dfjf_cg_tw" onclick='javascript:window.open(this.href, &quot;&quot;, &quot;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&quot;);return false;'> <i
-                                class="fa fa-twitter"></i> Share on Twitter </a> <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffoodjusticefinder.com?utm_source=facebook&utm_medium=social&utm_campaign=fjf_cg_fb"
-                            target="_blank" rel="noopener" onclick='javascript:window.open(this.href, &quot;&quot;, &quot;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&quot;);return false;'> <i class="fa fa-facebook"></i> Share on Facebook </a> <a
-                            class="btn btn-skip" onclick="nextSlide('.slide4');">Skip</a> </p>
+
+                    <p class="slideShare"> <a class="btn btn-twitter"
+                            href="https://twitter.com/intent/tweet?text=I%20used%20%23FoodJusticeFinder%20to%20see%20what%20action%20my%20local%20council%20has%20taken%20on%20food%20poverty.%20Find%20out%20if%20your%20council%20has%20taken%20the%20first%20steps%20to%20food%20justice%20here%20%F0%9F%91%87&url=https%3A%2F%2Ffoodjusticefinder.com%3Futm_source%3Dtwitter%26utm_medium%3Dsocial%26utm_campaign%3Dfjf_cg_tw"
+                            onclick='javascript:window.open(this.href, &quot;&quot;, &quot;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&quot;);return false;'>
+                            <i class="fa fa-twitter"></i> Share on Twitter </a> <a class="btn btn-facebook"
+                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffoodjusticefinder.com?utm_source=facebook&utm_medium=social&utm_campaign=fjf_cg_fb"
+                            target="_blank" rel="noopener"
+                            onclick='javascript:window.open(this.href, &quot;&quot;, &quot;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&quot;);return false;'>
+                            <i class="fa fa-facebook"></i> Share on Facebook </a> <a class="btn btn-skip"
+                            onclick="nextSlide('.slide4');">Skip</a> </p>
                 </div>
             </div>
         </div>
@@ -436,8 +504,9 @@ What is a Food Partnership?</h3>
                     <p>The best way to get as many people involved as possible is to share the campaign on WhatsApp.
                         Press the button below to send a message about the campaign to your friends and WhatsApp groups!
                     </p>
-                    <p class="slideShare"><a class="btn btn-whatsapp" href="https://api.whatsapp.com/send?text=I%20used%20%23FoodJusticeFinder%20to%20see%20what%20action%20my%20local%20council%20has%20taken%20on%20food%20poverty.%20Find%20out%20if%20your%20council%20has%20taken%20the%20first%20steps%20to%20food%20justice%20here%20%F0%9F%91%87https%3A%2F%2Ffoodjusticefinder.com%3Futm_source%3Dwhatsapp%26utm_medium%3Dsocial%26utm_campaign%3Dfjf_cg_tw_wa" target="_blank" rel="noopener"><i
-                                class="fa fa-whatsapp" aria-hidden="true"></i> Share on
+                    <p class="slideShare"><a class="btn btn-whatsapp"
+                            href="https://api.whatsapp.com/send?text=I%20used%20%23FoodJusticeFinder%20to%20see%20what%20action%20my%20local%20council%20has%20taken%20on%20food%20poverty.%20Find%20out%20if%20your%20council%20has%20taken%20the%20first%20steps%20to%20food%20justice%20here%20%F0%9F%91%87https%3A%2F%2Ffoodjusticefinder.com%3Futm_source%3Dwhatsapp%26utm_medium%3Dsocial%26utm_campaign%3Dfjf_cg_tw_wa"
+                            target="_blank" rel="noopener"><i class="fa fa-whatsapp" aria-hidden="true"></i> Share on
                             WhatsApp</a> </p>
                 </div>
             </div>

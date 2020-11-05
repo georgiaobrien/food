@@ -1093,3 +1093,26 @@ button#boxReveal {
 }
 
 }
+
+.slide.slideA {
+    display: flex;
+    background: #11ad8e;
+    min-height: auto;
+}
+
+.slide.slideB {
+    display: flex;
+}
+
+.slideA h1 {
+    color: white;
+    font-size: 3rem;
+}
+
+.slideB h2.high span {
+    font-size: 2rem !important;
+}
+
+.slideB .high {
+    margin-top: 2rem !important;
+}
